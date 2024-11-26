@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import StartScreen from './componentsCards/StartScreen';
+//import GameBoard from './GameBoard';
+import MainWindow from './componentsCards/MainWindow';
 
-function App() {
+const App = () => {
+  const [isGameStarted, setIsGameStarted] = useState(false);
+
+  const startGame = () => {
+    setIsGameStarted(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {isGameStarted ? <MainWindow /> : <StartScreen onStart={startGame} />}
     </div>
   );
-}
+};
 
 export default App;

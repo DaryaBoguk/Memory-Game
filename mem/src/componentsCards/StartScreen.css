@@ -1,0 +1,22 @@
+.start-screen {
+    text-align: center;
+  }
+  
+  .start-screen-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .start-button {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .start-button:hover {
+    background-color: #45a049;
+  }
