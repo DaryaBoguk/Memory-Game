@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import StartScreen from './componentsCards/StartScreen';
-//import GameBoard from './GameBoard';
+import GameBoard from './componentsPath/GameBoard'
 import MainWindow from './componentsCards/MainWindow';
+import Welcome from './StartGame/Welcome'
 
 const App = () => {
-  const [isGameStarted, setIsGameStarted] = useState(false);
-
-  const startGame = () => {
-    setIsGameStarted(true);
-  };
-
   return (
-    <div className="app">
-      {isGameStarted ? <MainWindow /> : <StartScreen onStart={startGame} />}
-    </div>
+    <Router>
+          <div className="app">
+            <Routes>
+              <Route path="/" element={<Welcome />} />
+              <Route path="/gamePairs" element={<MainWindow />} />
+              <Route path="/gamePath" element={<GameBoard />} />
+            </Routes>
+          </div>
+    </Router>
   );
 };
 
