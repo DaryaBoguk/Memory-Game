@@ -17,7 +17,7 @@ const GameBoard = () => {
   const [isOn, setIsOn] = useState(false);
   const [message, setMessage] = useState("");
   const [showDialog, setShowDialog] = useState(false);
-  const [won, setWon] = useState(false); // New state variable for game outcome
+  const [won, setWon] = useState(false); 
 
   useEffect(() => {
     if (isOn) {
@@ -49,12 +49,14 @@ const GameBoard = () => {
     } else if (canClick) {
       if (checkVictory()) {
         setMessage("Победа!");
-        setWon(true); // Set won to true
+        setWon(true); 
         if (level > record) setRecord(level);
         setNumberOfRects((prev) => Math.min(prev + 1, 20));
       } else {
         setMessage("Вы проиграли!");
-        setWon(false); // Set won to false
+        setWon(false); 
+        setLevel((prev) => 0);
+        setNumberOfRects((prev) => 3);
       }
       setCanClick(false);
       setShowDialog(true);
@@ -101,45 +103,47 @@ const GameBoard = () => {
 
   return (
     <div className="game-container">
-      <h1>Игра на память</h1>
-      <div className="game-grid">
-        {boardPlayer.map((row, i) =>
-          row.map((cell, j) => (
-            <div
-              key={i + '-' + j}
-              className={
-                "game-cell" +
-                (canClick
-                  ? cell
-                    ? " active"
-                    : ""
-                  : boardComputer[i][j]
-                  ? " computer"
-                  : "")
-              }
-              onClick={() => handleClick(i, j)}
-            ></div>
-          ))
+        <div className="header-container">
+            <h1>Игра на память</h1>
+        </div>
+
+        <div className="game-grid">
+            {boardPlayer.map((row, i) =>
+                row.map((cell, j) => (
+                    <div
+                        key={i + '-' + j}
+                        className={
+                            "game-cell" +
+                            (canClick ? (cell ? " active" : "") : boardComputer[i][j] ? " computer" : "")
+                        }
+                        onClick={() => handleClick(i, j)}
+                    ></div>
+                ))
+            )}
+        </div>
+
+        <button className="start-button" onClick={startGame}>
+            {isOn ? "Запомнить..." : canClick ? "Проверить" : "Начать"}
+        </button>
+
+        <div className="footer-container">
+            <div className="game-info">
+                <span>Уровень: {level}</span>
+                <span>Рекорд: {record}</span>
+            </div>
+            {message && <div className="game-message">{message}</div>}
+        </div>
+
+        {showDialog && (
+            <Dialog
+                message={message}
+                onClose={handleDialogClose}
+                onPlayAgain={handlePlayAgain}
+                won={won}
+            />
         )}
-      </div>
-      <button className="start-button" onClick={startGame}>
-        {isOn ? "Запомнить..." : canClick ? "Проверить" : "Начать"}
-      </button>
-      <div className="game-info">
-        <span>Уровень: {level}</span>
-        <span>Рекорд: {record}</span>
-      </div>
-      {message && <div className="game-message">{message}</div>}
-      {showDialog && (
-        <Dialog
-          message={message}
-          onClose={handleDialogClose}
-          onPlayAgain={handlePlayAgain}
-          won={won} 
-        />
-      )}
     </div>
-  );
+);
 };
 
 export default GameBoard;

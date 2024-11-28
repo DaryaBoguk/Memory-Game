@@ -1,94 +1,127 @@
 .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .game-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 50px);
-    gap: 5px;
-  }
-  
-  .game-cell {
-    width: 50px;
-    height: 50px;
-    border: 2px solid black;
-    background-color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .game-cell.active {
-    background-color: grey;
-  }
-  
-  .game-cell.computer {
-    background-color: red;
-  }
-  
-  .start-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: orange;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .start-button:hover {
-    background-color: darkorange;
-  }
-  
-  .game-info {
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .game-message {
-    font-size: 18px;
-    margin-top: 10px;
-    color: green;
-    font-weight: bold;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
-  .dialog-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .dialog {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .dialog button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: orange;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .dialog button:hover {
-    background-color: darkorange;
-  }
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 85px); 
+  gap: 5px;
+}
+
+.game-cell {
+  width: 85px; 
+  height: 85px; 
+  border: 2px solid black;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.game-cell.active {
+  background-color: grey;
+}
+
+.game-cell.computer {
+  background-color: orange;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.game-message {
+  font-size: 18px;
+  margin-top: 5px;
+  color: green;
+  font-weight: bold;
+}
+
+.dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/Menu.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.dialog {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  border-radius: 10px;
+  color: #7df0c0;
+  text-align: center;
+  font-size: 25px;
+  margin: 80px 20px 0px 20px; 
+}
+.dialog button {
+  margin: 10px 0; 
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #95FFD3; 
+  color: black; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dialog button:hover {
+  background-color: #D9D9D9;
+}
+
+.dialog h2 {
+  color: #FFF564;
+  margin-bottom: 15px;
+}
+
+
+
+.header-container {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(60, 55, 55, 0.1);
+  width: 300px; 
+  text-align: center;
+  color: #ece14f;
+}
+
+.footer-container {
+  background-color: white;
+  padding: 7px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 205px; 
+  text-align: center;
+  color: #58c899;
+}
+
+.start-button {
+  padding: 7px 15px;
+  font-size: 16px;
+  background-color: #7df0c0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; 
+}
+
+.start-button:hover {
+  background-color: #56c396;
+  color: white;
+}
