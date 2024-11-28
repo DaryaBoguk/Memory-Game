@@ -3,7 +3,10 @@ import './MainWindow.css';
 import over from '../images/Menu.png';
 import gameBack from '../images/Game.png';
 
+import { useNavigate } from 'react-router-dom';
+
 const MainWindow = () => {
+  const navigate = useNavigate();
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [shuffledCards, setShuffledCards] = useState([]);
@@ -125,6 +128,7 @@ const MainWindow = () => {
           )}
           <p>Your score: {score}</p>
           <button onClick={startNewGame}>Play Again</button>
+          <button onClick={() => navigate('/')} className='game-start-but'>Menu</button>
         </div>
       )}
     </div>
