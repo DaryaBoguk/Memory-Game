@@ -10,7 +10,8 @@ const Welcome = () => {
         <div className="start-screen-welcome">
             <img src={background} alt="Background" className="background-image" />
             <div className='buttons-container'>
-                <button onClick={() => navigate('/gamePairs')} className='game-pairs'>Дублеты</button>
+                {/* <button onClick={() => navigate('/gamePairs')} className='game-pairs'>Дублеты</button> */}
+                <button onClick={() => navigate('/startWindow')} className='game-pairs'>Дублеты</button>
                 <button onClick={() => navigate('/gamePath')} className='game-path'>Путь ниндзя</button>
             </div>
            

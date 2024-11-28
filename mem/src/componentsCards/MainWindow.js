@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import './MainWindow.css';
-import over from '../images/Menu.png';
-import gameBack from '../images/Game.png';
-
 import { useNavigate } from 'react-router-dom';
 
-const MainWindow = () => {
+const MainWindow = ({ timeLimit, mode }) => {
   const navigate = useNavigate();
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [shuffledCards, setShuffledCards] = useState([]);
   const [score, setScore] = useState(0);
-  const [time, setTime] = useState(60);
+  const [time, setTime] = useState(timeLimit);
   const [gameOver, setGameOver] = useState(false);
 
-  const initialCards = [
-    'image1.png', 'image1.png', 'image2.png', 'image2.png',
-    'image3.png', 'image3.png', 'image4.png', 'image4.png',
-    'image5.png', 'image5.png', 'image6.png', 'image6.png',
-  ];
+  const cardSets = {
+    color: [
+      'image1.png', 'image1.png', 'image2.png', 'image2.png',
+      'image3.png', 'image3.png', 'image4.png', 'image4.png',
+      'image5.png', 'image5.png', 'image6.png', 'image6.png',
+    ],
+    shape: [
+      'DSC_2910.JPG', 'DSC_2910.JPG', 'DSC_2929.JPG', 'DSC_2929.JPG',
+      'DSC_2976.JPG', 'DSC_2976.JPG', 'DSC_2982.JPG', 'DSC_2982.JPG',
+      'DSC_3033.JPG', 'DSC_3033.JPG', 'DSC_3160.JPG', 'DSC_3160.JPG',
+    ],
+  };
 
   useEffect(() => {
     startNewGame();
-  }, []);
+  }, [mode]);
 
   useEffect(() => {
-    if (matchedCards.length === initialCards.length / 2) {
-      setGameOver(true);
+    if (matchedCards.length === shuffledCards.length / 2 && shuffledCards.length > 0) {
+      setGameOver(true); 
     }
-  }, [matchedCards]);
+  }, [matchedCards, shuffledCards]);
 
   useEffect(() => {
     if (!gameOver && time > 0) {
@@ -38,16 +42,17 @@ const MainWindow = () => {
 
       return () => clearInterval(timer);
     } else if (time === 0) {
-      setGameOver(true);
+      setGameOver(true); 
     }
   }, [time, gameOver]);
 
   const startNewGame = () => {
-    setShuffledCards(shuffleArray([...initialCards]));
+    const cards = cardSets[mode] ? shuffleArray([...cardSets[mode]]) : [];
+    setShuffledCards(cards);
     setMatchedCards([]);
     setFlippedCards([]);
     setScore(0);
-    setTime(60);
+    setTime(timeLimit);
     setGameOver(false);
   };
 
@@ -89,7 +94,7 @@ const MainWindow = () => {
         <div className="time-bar">
           <div
             className="time-bar-fill"
-            style={{ width: `${(time / 60) * 100}%` }}
+            style={{ width: `${(time / timeLimit) * 100}%` }}
           ></div>
         </div>
       </div>
@@ -101,11 +106,11 @@ const MainWindow = () => {
               key={index}
               onClick={() => handleCardClick(index)}
               className={
-                "card " +
+                'card ' +
                 (flippedCards.includes(index) || matchedCards.includes(image) ? 'flipped' : '')
               }
               style={{
-                background: (flippedCards.includes(index) || matchedCards.includes(image))
+                background: flippedCards.includes(index) || matchedCards.includes(image)
                   ? `url(${require('./img/' + image)})`
                   : 'gray',
                 backgroundSize: 'cover',
@@ -121,14 +126,10 @@ const MainWindow = () => {
 
       {gameOver && (
         <div className="game-over">
-          {time === 0 ? (
-            <h1>Time's up!</h1>
-          ) : (
-            <h1>Congratulations!</h1>
-          )}
+          {time === 0 ? <h1>Time's up!</h1> : <h1>Congratulations!</h1>}
           <p>Your score: {score}</p>
           <button onClick={startNewGame}>Play Again</button>
-          <button onClick={() => navigate('/')} className='game-start-but'>Menu</button>
+          <button onClick={() => navigate('/')}>Menu</button>
         </div>
       )}
     </div>
