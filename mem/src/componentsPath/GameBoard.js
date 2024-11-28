@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./GameBoard.css";
+import { useNavigate } from 'react-router-dom';
 
 const GameBoard = () => {
+  const navigate = useNavigate();
   const [boardComputer, setBoardComputer] = useState(
     Array.from({ length: 5 }, () => Array(5).fill(0))
   );
@@ -13,14 +15,16 @@ const GameBoard = () => {
   const [numberOfRects, setNumberOfRects] = useState(3);
   const [canClick, setCanClick] = useState(false);
   const [isOn, setIsOn] = useState(false);
-  const [message, setMessage] = useState(""); // Для сообщений (победа/поражение)
+  const [message, setMessage] = useState("");
+  const [showDialog, setShowDialog] = useState(false);
+  const [won, setWon] = useState(false); // New state variable for game outcome
 
   useEffect(() => {
     if (isOn) {
       const timer = setTimeout(() => {
         setCanClick(true);
         setIsOn(false);
-        setMessage("Go!"); // Разрешаем клики
+        setMessage("Вперед!");
       }, 4000);
       return () => clearTimeout(timer);
     }
@@ -29,14 +33,13 @@ const GameBoard = () => {
   const startGame = () => {
     setMessage("");
     if (!isOn && !canClick) {
-      // Сбрасываем состояние и подготавливаем поле
       const newBoard = Array.from({ length: 5 }, () => Array(5).fill(0));
       for (let i = 0; i < numberOfRects; i++) {
         let x, y;
         do {
           x = Math.floor(Math.random() * 5);
           y = Math.floor(Math.random() * 5);
-        } while (newBoard[x][y] === 1); // Убедимся, что не повторяем координаты
+        } while (newBoard[x][y] === 1);
         newBoard[x][y] = 1;
       }
       setBoardComputer(newBoard);
@@ -45,25 +48,23 @@ const GameBoard = () => {
       setLevel((prev) => prev + 1);
     } else if (canClick) {
       if (checkVictory()) {
-        // Победа
-        setMessage("Victory!");
+        setMessage("Победа!");
+        setWon(true); // Set won to true
         if (level > record) setRecord(level);
-        setNumberOfRects((prev) => Math.min(prev + 1, 20)); // Увеличиваем сложность
-        setCanClick(false);
+        setNumberOfRects((prev) => Math.min(prev + 1, 20));
       } else {
-        // Поражение
-        setMessage("You lost!");
-        setLevel(0);
-        setNumberOfRects(3);
-        setCanClick(false);
+        setMessage("Вы проиграли!");
+        setWon(false); // Set won to false
       }
+      setCanClick(false);
+      setShowDialog(true);
     }
   };
 
   const handleClick = (i, j) => {
     if (canClick) {
       const newBoard = boardPlayer.map((row) => [...row]);
-      newBoard[i][j] = newBoard[i][j] === 0 ? 1 : 0; // Переключаем состояние
+      newBoard[i][j] = newBoard[i][j] === 0 ? 1 : 0;
       setBoardPlayer(newBoard);
     }
   };
@@ -77,9 +78,30 @@ const GameBoard = () => {
     return true;
   };
 
+  const handleDialogClose = () => {
+    setShowDialog(false);
+  };
+
+  const handlePlayAgain = () => {
+    startGame();
+    setShowDialog(false);
+  };
+
+  const Dialog = ({ message, onClose, onPlayAgain, won }) => {
+    return (
+      <div className="dialog-container">
+        <div className="dialog">
+          <h1>{message}</h1>
+          <button onClick={onPlayAgain}>{won ? "Продолжить" : "Играть снова"}</button>
+          <button onClick={() => navigate('/')}>Меню</button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="game-container">
-      <h1>Memory Game</h1>
+      <h1>Игра на память</h1>
       <div className="game-grid">
         {boardPlayer.map((row, i) =>
           row.map((cell, j) => (
@@ -101,13 +123,21 @@ const GameBoard = () => {
         )}
       </div>
       <button className="start-button" onClick={startGame}>
-        {isOn ? "Memorize..." : canClick ? "Check" : "Start"}
+        {isOn ? "Запомнить..." : canClick ? "Проверить" : "Начать"}
       </button>
       <div className="game-info">
-        <span>Level: {level}</span>
-        <span>Record: {record}</span>
+        <span>Уровень: {level}</span>
+        <span>Рекорд: {record}</span>
       </div>
       {message && <div className="game-message">{message}</div>}
+      {showDialog && (
+        <Dialog
+          message={message}
+          onClose={handleDialogClose}
+          onPlayAgain={handlePlayAgain}
+          won={won} 
+        />
+      )}
     </div>
   );
 };
