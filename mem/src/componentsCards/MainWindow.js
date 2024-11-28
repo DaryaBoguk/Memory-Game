@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './MainWindow.css';
+import over from '../images/Menu.png';
+import gameBack from '../images/Game.png';
 
 const MainWindow = () => {
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [shuffledCards, setShuffledCards] = useState([]);
   const [score, setScore] = useState(0);
-  const [time, setTime] = useState(60); // Обратный отсчет
+  const [time, setTime] = useState(60);
   const [gameOver, setGameOver] = useState(false);
 
   const initialCards = [
-    'image1.png', 'image1.png', 'image2.png', 'image2.png', 
+    'image1.png', 'image1.png', 'image2.png', 'image2.png',
     'image3.png', 'image3.png', 'image4.png', 'image4.png',
     'image5.png', 'image5.png', 'image6.png', 'image6.png',
   ];
 
   useEffect(() => {
-    // Перемешиваем карточки при загрузке
     startNewGame();
   }, []);
 
   useEffect(() => {
-    // Проверяем, завершена ли игра
     if (matchedCards.length === initialCards.length / 2) {
       setGameOver(true);
     }
@@ -44,7 +44,7 @@ const MainWindow = () => {
     setMatchedCards([]);
     setFlippedCards([]);
     setScore(0);
-    setTime(60); // Обратный отсчет: 60 секунд
+    setTime(60);
     setGameOver(false);
   };
 
@@ -67,13 +67,13 @@ const MainWindow = () => {
 
       if (shuffledCards[firstCard] === shuffledCards[secondCard]) {
         setMatchedCards((prev) => [...prev, shuffledCards[firstCard]]);
-        setScore((prev) => prev + 10); // Увеличиваем счет за совпадение
+        setScore((prev) => prev + 10);
       } else {
-        setScore((prev) => Math.max(0, prev - 2)); // Снимаем очки за ошибку
+        setScore((prev) => Math.max(0, prev - 2));
       }
 
       setTimeout(() => {
-        setFlippedCards([]); // Сбрасываем перевернутые карточки
+        setFlippedCards([]);
       }, 1000);
     }
   };
@@ -91,7 +91,7 @@ const MainWindow = () => {
         </div>
       </div>
 
-      {!gameOver ? (
+      <div className="game-board-container">
         <div className="game-board">
           {shuffledCards.map((image, index) => (
             <div
@@ -114,7 +114,9 @@ const MainWindow = () => {
             </div>
           ))}
         </div>
-      ) : (
+      </div>
+
+      {gameOver && (
         <div className="game-over">
           {time === 0 ? (
             <h1>Time's up!</h1>
