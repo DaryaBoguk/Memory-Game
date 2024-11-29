@@ -1,5 +1,5 @@
 .start-window {
-  display: none; /* Убедитесь, что он исчезает при переходе */
+  display: none; 
 }
 html, body {
   height: 100%;

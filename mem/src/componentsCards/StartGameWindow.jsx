@@ -7,6 +7,7 @@ const StartGameWindow = () => {
   const [start, setStart] = useState(false);
   const [timeLimit, setTimeLimit] = useState(30);
   const [mode, setMode] = useState('color');
+  const [gridSize, setGridSize] = useState('four');
 
   const handleGameStart = (time) => {
     setTimeLimit(time);
@@ -17,12 +18,12 @@ const StartGameWindow = () => {
     <div className="start-window">
       {start ? (
         <div className="game-screen">
-        <MainWindow timeLimit={timeLimit} mode={mode} />
-      </div>
+          <MainWindow timeLimit={timeLimit} mode={mode} gridSize={gridSize} />
+        </div>
       ) : (
         <div className="start-content">
           <h1>Welcome to the Memory Game!</h1>
-          <div>
+          <div className='choice-pictures'>
             <label>
               <input
                 type="radio"
@@ -41,7 +42,47 @@ const StartGameWindow = () => {
               />
               По фигурам
             </label>
+            <label>
+              <input
+                type="radio"
+                value="pictures"
+                checked={mode === 'pictures'}
+                onChange={(e) => setMode(e.target.value)}
+              />
+              Картинки
+            </label>
           </div>
+
+          <div className='choice-size-pitch'>
+            <label>
+              <input
+                type="radio"
+                value="four"
+                checked={gridSize === 'four'}
+                onChange={(e) => setGridSize(e.target.value)}
+              />
+              4x4
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="five"
+                checked={gridSize === 'five'}
+                onChange={(e) => setGridSize(e.target.value)}
+              />
+              5x5
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="six"
+                checked={gridSize === 'six'}
+                onChange={(e) => setGridSize(e.target.value)}
+              />
+              6x6
+            </label>
+          </div>
+
           <div className="button-container">
             <button className="start-button" onClick={() => handleGameStart(30)}>Start (30s)</button>
             <button className="start-button" onClick={() => handleGameStart(45)}>Start (45s)</button>
