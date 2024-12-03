@@ -85,8 +85,8 @@ const MainWindow = ({ timeLimit, mode, gridSize }) => {
   return (
     <div className="game-container">
       <div className="scoreboard">
-        <div>Score: {score}</div>
-        <div>Time: {time}s</div>
+        <div>Очки: {score}</div>
+        <div>Время: {time}s</div>
         <div className="time-bar">
           <div
             className="time-bar-fill"
@@ -127,10 +127,10 @@ const MainWindow = ({ timeLimit, mode, gridSize }) => {
 
       {gameOver && (
         <div className="game-over">
-          {win ? <h1>Congratulations!</h1> : <h1>Time's up!</h1>}
-          <p>Your score: {score}</p>
-          <button onClick={startNewGame}>Play Again</button>
-          <button onClick={() => navigate('/')}>Menu</button>
+          {win ? <h1>Поздравляем!</h1> : <h1>Время закночилось!</h1>}
+          <p>Набрано очков: {score}</p>
+          <button onClick={startNewGame}>Играть еще</button>
+          <button onClick={() => navigate('/')}>Меню</button>
         </div>
       )}
 

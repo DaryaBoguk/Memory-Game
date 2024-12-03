@@ -14,7 +14,7 @@
 .start-content {
   padding: 30px;
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
@@ -22,14 +22,18 @@
 .start-content h1 {
   font-size: 28px;
   margin-bottom: 20px;
-  color: #333;
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .choice-pictures label {
   display:inline-block;
   margin: 20px 10px;
   font-size: 18px;
-  color: #555;
+  background: linear-gradient(90deg, #FFF564 0%, #ffb300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   cursor: pointer;
 }
 
@@ -37,7 +41,9 @@
   display:inline-block;
   margin: 20px 25px;
   font-size: 18px;
-  color: #555;
+  background: linear-gradient(90deg, #FFF564 0%, #ffb300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   cursor: pointer;
 }
 
@@ -87,7 +93,7 @@ label input {
 }
 
 .start-window input[type="radio"] {
-  accent-color: black;
+  accent-color: rgb(146, 125, 10);
 }
 
 

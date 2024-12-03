@@ -25,7 +25,7 @@ const StartGameWindow = () => {
         </div>
       ) : (
         <div className="start-content">
-          <h1>Welcome to the Memory Game!</h1>
+          <h1>Выберите режим</h1>
           <div className='choice-pictures'>
             <label>
               <input
@@ -87,9 +87,9 @@ const StartGameWindow = () => {
           </div>
 
           <div className="button-container">
-            <button className="start-button" onClick={() => handleGameStart(30)}>Start (30s)</button>
-            <button className="start-button" onClick={() => handleGameStart(45)}>Start (45s)</button>
-            <button className="start-button" onClick={() => handleGameStart(60)}>Start (60s)</button>
+            <button className="start-button" onClick={() => handleGameStart(30)}>Начать (30с)</button>
+            <button className="start-button" onClick={() => handleGameStart(45)}>Начать (45с)</button>
+            <button className="start-button" onClick={() => handleGameStart(60)}>Начать (60с)</button>
           </div>
         </div>
       )}
