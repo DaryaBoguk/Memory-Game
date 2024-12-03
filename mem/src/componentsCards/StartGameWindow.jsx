@@ -3,7 +3,10 @@ import GameBoard from './MainWindow';
 import MainWindow from './MainWindow';
 import "./StartGameWindow.css"
 
+import { useNavigate } from 'react-router-dom';
+
 const StartGameWindow = () => {
+  const navigate = useNavigate();
   const [start, setStart] = useState(false);
   const [timeLimit, setTimeLimit] = useState(30);
   const [mode, setMode] = useState('color');
@@ -90,6 +93,9 @@ const StartGameWindow = () => {
           </div>
         </div>
       )}
+      <div className="menuCardB-container">
+          <button className="menuCardB-button" onClick={() => navigate('/')}>Меню</button>
+          </div>
     </div>
   );
 };

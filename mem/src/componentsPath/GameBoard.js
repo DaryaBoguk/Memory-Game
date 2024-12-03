@@ -103,9 +103,13 @@ const GameBoard = () => {
 
   return (
     <div className="game-container">
-        <div className="header-container">
-            <h1>Игра на память</h1>
-        </div>
+          <div className="menuBut-container">
+          <button className="menuClos-button" onClick={() => navigate('/')}>Меню</button>
+          <div className="header-container">
+          <h1>Игра на память</h1>
+          </div>
+          </div>
+        
 
         <div className="game-grid">
             {boardPlayer.map((row, i) =>

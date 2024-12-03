@@ -1,14 +1,55 @@
+.menuBut-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.menuClos-button {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  font-size: 20px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #FFF564 0%, #ffd900 100%);
+  color: white;
+}
+
+.menuClos-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menuClos-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menuClos-button:focus {
+  outline: none;
+}
+
+.header-container {
+  text-align: center;
+  width: 100%;
+}
+
+.header-container h1 {
+  margin: 0;
+}
+
 .game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  
 }
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(5, 75px); 
+  grid-template-columns: repeat(5, 75px);
   gap: 5px;
   padding: 20px;
   background-color: white;
@@ -16,8 +57,8 @@
 }
 
 .game-cell {
-  width: 75px; 
-  height: 75px; 
+  width: 75px;
+  height: 75px;
   border: 2px solid black;
   background-color: white;
   cursor: pointer;
@@ -39,16 +80,16 @@
   font-size: 16px;
   font-weight: bold;
   background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .game-message {
   font-size: 18px;
   margin-top: 5px;
   background: linear-gradient(90deg, #43e97b 0%, rgb(4, 240, 4) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: bold;
 }
 
@@ -65,19 +106,20 @@
   justify-content: center;
   z-index: 1000;
 }
+
 .dialog {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   border-radius: 10px;
   color: #7df0c0;
   text-align: center;
   font-size: 25px;
-  margin: 100px 20px 0px 20px; 
+  margin: 100px 20px 0px 20px;
 }
+
 .dialog button {
   margin: 15px 0;
-
   font-size: 18px;
   padding: 12px 20px;
   background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
@@ -118,19 +160,17 @@
 .dialog-container .dialog h1 {
   margin: 40px 0;
   background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 40px;
 }
-
-
 
 .game-container .header-container {
   background-color: white;
   padding: 5px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(60, 55, 55, 0.1);
-  width: 300px; 
+  width: 300px;
   text-align: center;
   color: #ece14f;
 }
@@ -140,14 +180,9 @@
   padding: 7px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 205px; 
+  width: 205px;
   text-align: center;
   color: #58c899;
-}
-.header-container h1 {
-  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .start-button {
@@ -159,7 +194,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .start-button:hover {

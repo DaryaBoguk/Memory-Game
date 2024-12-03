@@ -89,3 +89,28 @@ label input {
 .start-window input[type="radio"] {
   accent-color: black;
 }
+
+
+.menuCardB-button {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  font-size: 20px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #FFF564 0%, #ffd900 100%);
+  color: white;
+}
+
+.menuCardB-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menuCardB-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menuCardB-button:focus {
+  outline: none;
+}

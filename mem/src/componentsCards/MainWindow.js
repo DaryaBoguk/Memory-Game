@@ -133,6 +133,8 @@ const MainWindow = ({ timeLimit, mode, gridSize }) => {
           <button onClick={() => navigate('/')}>Menu</button>
         </div>
       )}
+
+
     </div>
   );
 };
