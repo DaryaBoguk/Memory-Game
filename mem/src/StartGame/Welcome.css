@@ -21,6 +21,8 @@
 }
 
 .buttons-container {
+    position: absolute;
+    top: 40%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -28,7 +30,7 @@
 }
 
 button {
-    padding: 15px 30px;
+    padding: 10px 30px;
     font-size: 30px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: none;
@@ -41,8 +43,15 @@ button {
     background-color: #95FFD3;
     color: black; 
 }
+.game-shulte {
+    background-color: #95FFD3;
+    color: black; 
+}
 
 .game-pairs:hover {
+    transform: scale(1.05);
+}
+.game-shulte:hover {
     transform: scale(1.05);
 }
 
@@ -50,7 +59,14 @@ button {
     background-color: #FFF564;
     color: black;
 }
+.game-word {
+    background-color: #FFF564;
+    color: black;
+}
 
 .game-path:hover {
+    transform: scale(1.05);
+}
+.game-word:hover {
     transform: scale(1.05);
 }

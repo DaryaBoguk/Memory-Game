@@ -14,6 +14,7 @@ const Welcome = () => {
                 <button onClick={() => navigate('/startWindow')} className='game-pairs'>Дублеты</button>
                 <button onClick={() => navigate('/gamePath')} className='game-path'>Путь ниндзя</button>
                 <button onClick={() => navigate('/startShulte')} className='game-shulte'>Таблица Шульте</button>
+                <button onClick={() => navigate('/word')} className='game-word'>Шифр</button>
             </div>
            
         </div>
