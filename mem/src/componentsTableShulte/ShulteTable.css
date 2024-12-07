@@ -34,8 +34,8 @@
   margin-bottom: 20px;
 }
 
-.reset-button {
-  background-color: #4caf50;
+.reset-button {  
+  background: linear-gradient(90deg, #43e97b 0%, rgb(4, 240, 4) 100%);
   color: white;
   border: none;
   padding: 10px 15px;
@@ -47,7 +47,7 @@
 }
 
 .reset-button:hover {
-  background-color: #45a049;
+  background: linear-gradient(90deg, rgb(4, 240, 4) 0%, #4caf50 100%);
 }
 
 .shulte-grid {

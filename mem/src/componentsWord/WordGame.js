@@ -84,6 +84,7 @@ const WordGame = () => {
     setInputTime(30);
     setShowDialog(false);
     setInputStartTime(null);
+    fetchRandomWords();
     setInputTimeSpent(0);
     if (inputTimerId) clearInterval(inputTimerId);
   };
@@ -114,7 +115,7 @@ const WordGame = () => {
           <button className="menuWord-button" onClick={() => navigate('/')}>Меню</button>
           </div>
       <div className="header-container">
-        <h1>Игра на память</h1>
+        <h1>Шифр</h1>
       </div>
 
       {showWord && (
@@ -160,7 +161,7 @@ const WordGame = () => {
         <Dialog
           message={isWin 
             ? <>Поздравляем! Вы выиграли!<br />Время вспоминания: {inputTimeSpent} секунд.</>
-            : `Вы вспомнили ${userInput.filter((word, index) => word === currentWords[index]).length} из ${currentWords.length} слов за ${inputTimeSpent} секунд.`}
+            : `Вы вспомнили ${userInput.filter((word, index) => word.toLowerCase() === currentWords[index].toLowerCase()).length} из ${currentWords.length} слов за ${inputTimeSpent} секунд.`}
           onClose={startNewGame}
         />
       )}

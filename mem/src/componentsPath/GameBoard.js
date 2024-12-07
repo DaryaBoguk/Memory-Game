@@ -106,7 +106,7 @@ const GameBoard = () => {
           <div className="menuBut-container">
           <button className="menuClos-button" onClick={() => navigate('/')}>Меню</button>
           <div className="header-container">
-          <h1>Игра на память</h1>
+          <h1>Путь ниндзя</h1>
           </div>
           </div>
         

@@ -12,12 +12,12 @@ const MainWindow = ({ timeLimit, mode, gridSize }) => {
   const [gameOver, setGameOver] = useState(false);
   const [win, setWin] = useState(false); 
 
-  const sizeMap = { four: 16, five: 25, six: 36 };
-  const gridColumnsMap = { four: 4, five: 5, six: 6 };
+  const sizeMap = { four: 12, five: 16, six: 20 };
+  const gridColumnsMap = { four: 4, five: 4, six: 5 };
   const totalCards = sizeMap[gridSize];
 
   const cardSets = {
-    color: ['image1.png', 'image2.png', 'image3.png', 'image4.png', 'image5.png', 'image6.png'],
+    color: ['color1.png', 'color2.png', 'color3.png', 'color4.png', 'color5.png', 'color6.png', 'color7.png', 'color8.png', 'color9.png', 'color10.png'],
     shape: ['circle.png', 'square.png', 'triangle.png', 'star.png', 'diamond.png', 'heart.png'],
     pictures: ['cat.png', 'dog.png', 'fox.png', 'rabbit.png', 'bear.png', 'lion.png'],
   };

@@ -64,7 +64,7 @@ const StartGameWindow = () => {
                 checked={gridSize === 'four'}
                 onChange={(e) => setGridSize(e.target.value)}
               />
-              4x4
+              3x4
             </label>
             <label>
               <input
@@ -73,7 +73,7 @@ const StartGameWindow = () => {
                 checked={gridSize === 'five'}
                 onChange={(e) => setGridSize(e.target.value)}
               />
-              5x5
+              4x4
             </label>
             <label>
               <input
@@ -82,7 +82,7 @@ const StartGameWindow = () => {
                 checked={gridSize === 'six'}
                 onChange={(e) => setGridSize(e.target.value)}
               />
-              6x6
+              4x5
             </label>
           </div>
 
