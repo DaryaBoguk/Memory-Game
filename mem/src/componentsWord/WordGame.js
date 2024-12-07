@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './WordGame.css';
 import { useNavigate } from 'react-router-dom';
 
-const words = ['кот', 'собака', 'конь', 'овал', 'ручка', 'чайка'];
 
 const WordGame = () => {
   
@@ -23,8 +22,21 @@ const WordGame = () => {
 
   useEffect(() => {
     startNewGame();
+    fetchRandomWords();
   }, []);
 
+  const fetchRandomWords = async () => {
+    try {
+      const response = await fetch('../library.txt');
+      const text = await response.text();
+      const shwords = text.split('\n').map(word => word.trim()).filter(word => word !== '');
+      const shuffledWords = shwords.sort(() => 0.5 - Math.random());
+      const words = shuffledWords.slice(0, 5);
+      setCurrentWords(words);
+    } catch (error) {
+      console.error('Ошибка при загрузке слов из файла:', error);
+    }
+  };
   useEffect(() => {
     if (showWord) {
       if (rememberTime > 0) {
@@ -62,7 +74,7 @@ const WordGame = () => {
   }, [currentWordIndex, showWord, currentWords]);
 
   const startNewGame = () => {
-    const shuffledWords = words.sort(() => 0.5 - Math.random()).slice(0, 5);
+    const shuffledWords = currentWords.sort(() => 0.5 - Math.random()).slice(0, 5);
     setCurrentWords(shuffledWords);
     setShowWord(true);
     setCurrentWordIndex(0);
@@ -84,7 +96,7 @@ const WordGame = () => {
 
   const handleSubmit = () => {
     if (inputTimerId) clearInterval(inputTimerId);
-    const correctCount = userInput.filter((word, index) => word === currentWords[index]).length;
+    const correctCount = userInput.filter((word, index) => word.toLowerCase() === currentWords[index].toLowerCase()).length;
     setIsGameOver(true);
     setIsWin(correctCount === currentWords.length);
     setShowDialog(true);

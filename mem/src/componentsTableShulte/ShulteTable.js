@@ -75,6 +75,7 @@ const ShulteTable = ({ gridSize, order, shuffleOnClick }) => {
             className="shulte-grid"
             style={{
               gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
+              gridTemplateRows: `repeat(${gridSize}, 1fr)`,
             }}
           >
             {numbers.map((number) => (
